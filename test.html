@@ -1,0 +1,165 @@
+1-Age Table (ga_age):
+
+----------------+------------------------+-----------+----------+---------
+ id             | integer                |           | not null |
+ top_level      | character varying(256) |           |          |
+ sub_folder     | character varying(256) |           |          |
+ entity_id      | character varying(256) |           |          |
+ community_id   | character varying(256) |           |          |
+ community_name | character varying(256) |           |          |
+ users          | character varying(256) |           |          |
+ age            | character varying(256) |           |          |
+ date           | character varying(256) |           |          |
+
+Func:
+'dimensions': [{'name':'ga:userAgeBracket' , 'name':'ga:sessionCount'}],
+
+Query:
+""" INSERT INTO consultancy_integrations."ga_age" (top_level, sub_folder, entity_id,community_id,community_name,users,age,date)
+                VALUES (%s,%s,%s,%s,%s,%s,%s)"""
+
+______________________________________________________
+2-Browser Table (ga_ga_browser)
+
+id              | integer                |           | not null |
+top_level       | character varying(256) |           |          |
+sub_folder      | character varying(256) |           |          |
+entity_id       | character varying(256) |           |          |
+community_id    | character varying(256) |           |          |
+community_name  | character varying(256) |           |          |
+users           | character varying(256) |           |          |
+sessions        | character varying(256) |           |          |
+organicsearches | character varying(256) |           |          |
+browser         | character varying(256) |           |          |
+date            | character varying(256) |           |          |
+
+Func:
+'metrics': [{'expression':'ga:organicSearches' , 'expression':'ga:sessions'}],
+'dimensions': [{'name':'ga:browser' , 'name':'ga:sessionCount'}],
+
+Query:
+""" INSERT INTO consultancy_integrations."ga_browser" (top_level, sub_folder, entity_id,community_id,community_name,users,sessions,organicsearches,browser,date)
+                VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+______________________________________________________
+
+3-Default Channel (ga_default_channel)
+
+------------------------+------------------------+-----------+----------+---------
+ id                     | integer                |           | not null |
+ top_level              | character varying(256) |           |          |
+ sub_folder             | character varying(256) |           |          |
+ entity_id              | character varying(256) |           |          |
+ community_id           | character varying(256) |           |          |
+ community_name         | character varying(256) |           |          |
+ users                  | character varying(256) |           |          |
+ sessions               | character varying(256) |           |          |
+ organicsearches        | character varying(256) |           |          |
+ monthofyear            | character varying(256) |           |          |
+ date                   | character varying(256) |           |          |
+ defaultchannelgrouping | character varying(256) |           |          |
+
+
+ Func:
+ 'metrics': [{'expression':'ga:organicSearches' , 'expression':'ga:sessions'}],
+ 'dimensions': [{'name':'ga:channelGrouping' , 'name':'ga:sessionCount'}],
+
+ Query:
+ """ INSERT INTO consultancy_integrations."ga_default_channel" (top_level, sub_folder, entity_id,community_id,community_name,users,sessions,organicsearches,monthofyear,date,defaultchannelgrouping)
+                 VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+
+______________________________________________________
+
+4-Device table (ga_device)
+
+----------------------+------------------------+-----------+----------+---------
+ id                   | integer                |           | not null |
+ top_level            | character varying(256) |           |          |
+ sub_folder           | character varying(256) |           |          |
+ entity_id            | character varying(256) |           |          |
+ community_id         | character varying(256) |           |          |
+ community_name       | character varying(256) |           |          |
+ users                | character varying(256) |           |          |
+ date                 | character varying(256) |           |          |
+ mobiledevicebranding | character varying(256) |           |          |
+ mobiledevicemodel    | character varying(256) |           |          |
+ mobiledeviceinfo     | character varying(256) |           |          |
+
+
+
+Func:
+'dimensions': [{'name':'ga:mobileDeviceBranding' , 'name':'ga:mobileDeviceModel' ,  'name':'ga:mobileDeviceInfo' , 'name':'ga:sessionCount'}],
+
+Query:
+""" INSERT INTO consultancy_integrations."ga_device" (top_level, sub_folder, entity_id,community_id,community_name,users,mobiledevicebranding,mobiledevicemodel,mobiledeviceinfo,date)
+                VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+______________________________________________________
+5-Gender table (ga_gender)
+
+----------------+------------------------+-----------+----------+---------
+ id             | integer                |           | not null |
+ top_level      | character varying(256) |           |          |
+ sub_folder     | character varying(256) |           |          |
+ entity_id      | character varying(256) |           |          |
+ community_id   | character varying(256) |           |          |
+ community_name | character varying(256) |           |          |
+ users          | character varying(256) |           |          |
+ date           | character varying(256) |           |          |
+ gender         | character varying(256) |           |          |
+
+
+Func:
+'dimensions': [{'name':'ga:userGender' , 'name':'ga:sessionCount'}],
+
+Query:
+""" INSERT INTO consultancy_integrations."ga_gender" (top_level, sub_folder, entity_id,community_id,community_name,users,date,gender)
+                VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"""
+______________________________________________________
+
+6-Page View (ga_page_view)
+
+----------------+------------------------+-----------+----------+---------
+ id             | integer                |           | not null |
+ top_level      | character varying(256) |           |          |
+ sub_folder     | character varying(256) |           |          |
+ entity_id      | character varying(256) |           |          |
+ community_id   | character varying(256) |           |          |
+ community_name | character varying(256) |           |          |
+ users          | character varying(256) |           |          |
+ date           | character varying(256) |           |          |
+ pageviews      | character varying(256) |           |          |
+
+
+ Func:
+ 'metrics': [{'expression':'ga:pageviews'}],
+ 'dimensions': [{'name':'ga:sessionCount'}],
+
+
+ Query:
+ """ INSERT INTO consultancy_integrations."ga_page_view" (top_level, sub_folder, entity_id,community_id,community_name,users,date,pageviews)
+                 VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"""
+______________________________________________________
+7-Page View (ga_users_sessions)
+
+-----------------+------------------------+-----------+----------+---------
+ id              | integer                |           | not null |
+ top_level       | character varying(256) |           |          |
+ sub_folder      | character varying(256) |           |          |
+ entity_id       | character varying(256) |           |          |
+ community_id    | character varying(256) |           |          |
+ community_name  | character varying(256) |           |          |
+ users           | character varying(256) |           |          |
+ sessions        | character varying(256) |           |          |
+ organicsearches | character varying(256) |           |          |
+ date            | character varying(256) |           |          |
+ newusers        | character varying(256) |           |          |
+ maxusers        | character varying(256) |           |          |
+
+
+Func:
+'metrics': [{'expression':'ga:newUsers' , 'expression':'ga:sessions' ,'expression':'ga:organicSearches'}],
+'dimensions': [{'name':'ga:sessionCount'}],
+
+//maxusers same as newuser (ga:newUsers)
+Query:
+""" INSERT INTO consultancy_integrations."ga_users_sessions" (top_level, sub_folder, entity_id,community_id,community_name,users,sessions,organicsearches,newusers,date,maxusers)
+                VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""

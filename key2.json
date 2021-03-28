@@ -1,0 +1,14 @@
+{
+    "type": "service_account",
+    "project_id": "tenacious-zoo-286622",
+    "private_key_id": "3c446f773cd1e598d963def5d50d4c38d51d1bbb",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC/wg7Vgw3aNSUd\nCNdmd1W4o5K7sGqyhD5Oa7JoU17I0N1N9Cxdq6Br4XZaI9N3BZbYNioLJgI5qqll\nXz8eKxj8pw1IUmT3DpwbLiFWqxDd/VcYFPm6ocwtwyRnibYAVPZBCikSOKZvZt0g\nZxWvssLY2ZL2Pv4IPJHkm356aq2gDjCu7jrl9JQbS6IlxslGCHbzR+EiI/ecOXlB\ngAUvTl3oL53nmSB2FwoO/SlnZ97cq8OwK5wWkY/WsCMJc3zP+WzTnAHadZCKhwNG\ndej38zU6kG2W8v3NivLkB3B+E3K3M/jcTq1Y9Tmnaxzh1fCfWL/5x9SpFKpcCt1e\nLZDhVHepAgMBAAECggEAAzKhKbLzFuNemF91EoRFI/xoux2KVSphMzb9KI7Sj7m/\n8jrzFHRpiyY24YwjmVWfOg4Cx63QfEkZ/kYUDBSlTyCACoE2DGxF2SqWeFbUKkeK\nKmCLK5WwJuE2tbO1Ti5Pu8ghS2iYPSPzf96INr/3gamn/dhEem58JlpOrFiKen1K\nsuwCm2fGTMR7GRmsCFkMb2HdfFP0uAS6CR0Fi3DGrT0hzo4OrNHcRYnmttR+pT7r\n1Ii/rL5rNXeVR9tZcgtJj+K77C7CBshQzuNG0FKMShyy0pJPOmwzFDA9XJ0XMCnv\nTuUI7KpOLOaY1H5x8AD50vSe3zaORHQWtzRhjgivQQKBgQDifKqVf6VHC+QKFhhS\nFSdnNJ8O+iUcU/vMyThgibbGarxIrQ2buMpFWnCFtzIhDGu2R0h9TvuHuwuw1yBt\nlBrS97dXZpyAAa6CGQBfpcqKQK/Ju94BXfEjqv+QC8U0IGjQNLK+fj5UUNxHQku/\nF+fJO7AkM3nUYP6yI/F/174UuQKBgQDYvuA6a0GqxPfMuP8hPnItOm5uvynsFUiB\nnjySzoJFnrXenO8QKfqBbpanB9YzdltkypfhaSRvzxhKId+yOBEx+u5KhxVhCHkH\n6UCTFsPHPBOIOPsgSlmspuJ0/Q6B8YhQQfZwRX9BKI9Rs6qy0VExyXFTgWFtq/qJ\nspxlLDLicQKBgDsqFeW30pUcphV8cB4BKKntNR/UeJ1N0xlL905Aq15pw4W4rzVe\nsHgth/dmQ9IeTITxWh5h45MxaXxoti/p4Jf73gkW5QsLZWrW3SIfTSmQfFtWmEgD\nIlsO8HPQn1NepAK/wXHByMZ92Q1EZEUnGYWX8guC5vBz5hTjDtM2qJEBAoGAVBYR\nBXjw2+BYRjsK94mzX+qIRzywdd935plN5KJrFblR01BMypeOkMInfhtjNUnYgQy7\nyX4x3ZKZWME1eH2Z5ir0YUNwvtk7ox8Rpz6wq02aQkHg4xEVIw8HUd2O0Ei02nYM\ntlev28Zxe3/ZXFAqUMdWyM+rzZFnvB3n4LQ59XECgYEAnc5MLC7cncf8iei54Vy9\nfncCtRcl4mKqHeq+6EJNoTptTAP6XPWgBlWQOt7vXi8/n5P1H1yfJWOJJ0ikeW6T\nT6W8rPfnsJcH15GGM8Z/D3gKeFJZRwQdgRhXL01Q+ASaWgAHR2yKoJqjKeKiGArd\nliL2QOKrOHAD4cJ2PuQLy5M=\n-----END PRIVATE KEY-----\n",
+    "client_email": "pw-analytics-projects@tenacious-zoo-286622.iam.gserviceaccount.com",
+    "client_id": "116301100695860879553",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/pw-analytics-projects%40tenacious-zoo-286622.iam.gserviceaccount.com"
+  }
+  
+  
