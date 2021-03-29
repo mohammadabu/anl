@@ -99,7 +99,7 @@ def save_page_view_report(data,VIEW_ID,day):
     for x in data:
       cursor = connection.cursor()
       pg_insert = """ INSERT INTO consultancy_integrations."ga_page_view" (top_level, sub_folder, entity_id,community_id,community_name,users,pageviews,page_url,month_of_year,avg_time_on_page,date)
-                VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"""
+                VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
       inserted_values = (VIEW_ID[0], VIEW_ID[1], VIEW_ID[2], VIEW_ID[3], VIEW_ID[4],data[x]['metric']['ga:users'],data[x]['metric']['ga:pageviews'],data[x]['dimensions']['ga:pagePath'],data[x]['dimensions']['ga:month'],data[x]['metrics']['ga:avgTimeOnPage'],day_norway)
       cursor.execute(pg_insert, inserted_values)
       connection.commit()
@@ -161,7 +161,7 @@ def save_device_report(data,VIEW_ID,day):
     for x in data:
       cursor = connection.cursor()
       pg_insert = """ INSERT INTO consultancy_integrations."ga_device" (top_level, sub_folder, entity_id,community_id,community_name,users,mobile_device_category,month_of_year,date)
-                VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"""
+                VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
       inserted_values = (VIEW_ID[0], VIEW_ID[1], VIEW_ID[2], VIEW_ID[3], VIEW_ID[4],data[x]['metric']['ga:users'],data[x]['dimension']['ga:deviceCategory'],data[x]['dimension']['ga:month'],day_norway)
       cursor.execute(pg_insert, inserted_values)
       connection.commit()
@@ -302,18 +302,13 @@ def get_user_report(analytics,VIEW_ID,day):
       }
   ).execute()
 
-def sync_user_report(analytics,VIEW_ID,day):
-  data = get_user_report(analytics,VIEW_ID,day)
-  data = print_response(data)
-  print(data)
-  # save_user_report(data)
 
 def sync_google_account(analytics,VIEW_ID,day):
-    # sync_age_report(analytics,VIEW_ID,day)
-    # sync_browser_report(analytics,VIEW_ID,day)
-    # sync_default_channel_report(analytics,VIEW_ID,day)
-    # sync_gender_report(analytics,VIEW_ID,day)
-    # sync_user_session_report(analytics,VIEW_ID,day)
+    sync_age_report(analytics,VIEW_ID,day)
+    sync_browser_report(analytics,VIEW_ID,day)
+    sync_default_channel_report(analytics,VIEW_ID,day)
+    sync_gender_report(analytics,VIEW_ID,day)
+    sync_user_session_report(analytics,VIEW_ID,day)
     sync_device_report(analytics,VIEW_ID,day)
     sync_page_view_report(analytics,VIEW_ID,day)
 
@@ -334,25 +329,40 @@ def main():
       
 def get_google_entity():
   cursor = connection.cursor()
-  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 5 OFFSET 3 """ 
-  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 5 OFFSET 8 """
-  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 5 OFFSET 13 """
-  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 5 OFFSET 18 """ 
-  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 5 OFFSET 23 """ 
-  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 5 OFFSET 28 """ 
-  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 5 OFFSET 33 """ 
-  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 5 OFFSET 38 """ 
-
-
-
-  pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" """ 
-  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 5 OFFSET 48 """ 
-  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 5 OFFSET 53 """ 
-  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 5 OFFSET 58 """ 
-  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 5 OFFSET 63 """ 
-  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 5 OFFSET 68 """ 
-  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 5 OFFSET 73 """ 
-  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 5 OFFSET 78 """ 
+  # server 1
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 0 """
+  # server 2
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 3 """ 
+  # server 3
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 6 """
+  # server 4
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 9 """
+  # server 5
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 12 """ 
+  # server 6
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 15 """ 
+  # to be continue
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 18 """ 
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 21 """ 
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 24 """ 
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 27 """ 
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 30 """ 
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 33 """ 
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 36 """ 
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 39 """ 
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 42 """ 
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 45 """ 
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 48 """ 
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 51 """ 
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 54 """ 
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 57 """ 
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 60 """ 
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 63 """ 
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 66 """ 
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 69 """ 
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 72 """ 
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 75 """ 
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 78 """ 
   cursor.execute(pg_select)
   record = cursor.fetchall()
   return record
