@@ -100,7 +100,7 @@ def save_page_view_report(data,VIEW_ID,day):
       cursor = connection.cursor()
       pg_insert = """ INSERT INTO consultancy_integrations."ga_page_view" (top_level, sub_folder, entity_id,community_id,community_name,users,pageviews,page_url,month_of_year,avg_time_on_page,date)
                 VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
-      inserted_values = (VIEW_ID[0], VIEW_ID[1], VIEW_ID[2], VIEW_ID[3], VIEW_ID[4],data[x]['metric']['ga:users'],data[x]['metric']['ga:pageviews'],data[x]['dimensions']['ga:pagePath'],data[x]['dimensions']['ga:month'],data[x]['metrics']['ga:avgTimeOnPage'],day_norway)
+      inserted_values = (VIEW_ID[0], VIEW_ID[1], VIEW_ID[2], VIEW_ID[3], VIEW_ID[4],data[x]['metric']['ga:users'],data[x]['metric']['ga:pageviews'],data[x]['dimension']['ga:pagePath'],data[x]['dimension']['ga:month'],data[x]['metric']['ga:avgTimeOnPage'],day_norway)
       cursor.execute(pg_insert, inserted_values)
       connection.commit()
 
