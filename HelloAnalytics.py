@@ -407,17 +407,17 @@ def sync_page_view_report(analytics,VIEW_ID,day):
   save_page_view_report(data,VIEW_ID,day)
 
 def sync_google_account(analytics,VIEW_ID,day):
-    # sync_age_report(analytics,VIEW_ID,day)
-    # sync_browser_report(analytics,VIEW_ID,day)
-    # sync_default_channel_report(analytics,VIEW_ID,day)
-    # sync_gender_report(analytics,VIEW_ID,day)
-    # sync_user_session_report(analytics,VIEW_ID,day)
-    # sync_device_report(analytics,VIEW_ID,day)
+    sync_age_report(analytics,VIEW_ID,day)
+    sync_browser_report(analytics,VIEW_ID,day)
+    sync_default_channel_report(analytics,VIEW_ID,day)
+    sync_gender_report(analytics,VIEW_ID,day)
+    sync_user_session_report(analytics,VIEW_ID,day)
+    sync_device_report(analytics,VIEW_ID,day)
     sync_page_view_report(analytics,VIEW_ID,day)
 
 def main():
   google_entity = get_google_entity()
-  sdate = date(2021, 2, 28)
+  sdate = date(202, 1, 1)
   edate = date(2021, 3, 29)  
   delta = edate - sdate
   for entity in google_entity:
@@ -433,7 +433,7 @@ def main():
 def get_google_entity():
   cursor = connection.cursor()
   # server 1
-  pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 1 OFFSET 0 """
+  pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 1 OFFSET 1 """
   # server 2
   # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 6 """ 
   # server 3
