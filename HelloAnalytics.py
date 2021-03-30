@@ -363,21 +363,30 @@ def save_page_view_report(data,VIEW_ID,day):
   global count_page_view_report
   global insert_page_view_report_list
   day_norway =  convert_date(day) 
-  if(data):
+  if(data) or count_page_view_report == 10000 or day == "2021-03-29":
     cursor = connection.cursor()
-    for x in data:
-      pg_insert = """ INSERT INTO consultancy_integrations."ga_page_view" (top_level, sub_folder, entity_id,community_id,community_name,users,pageviews,page_url,month_of_year,avg_time_on_page,date)
-                VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
-      if count_page_view_report == 10000 or day == "2021-03-29": 
-          cursor.executemany(pg_insert, insert_page_view_report_list)
-          connection.commit()
-          insert_page_view_report_list = list()
-          count_page_view_report = 0
-          print('save_page_view_report')
-      else:
-          insert_page_view_report_list.append([VIEW_ID[0], VIEW_ID[1], VIEW_ID[2], VIEW_ID[3], VIEW_ID[4],data[x]['metric']['ga:users'],data[x]['metric']['ga:pageviews'],data[x]['dimension']['ga:pagePath'],data[x]['dimension']['ga:month'],data[x]['metric']['ga:avgTimeOnPage'],day_norway])  
-
-      count_page_view_report += 1
+    if data:
+      for x in data:
+        pg_insert = """ INSERT INTO consultancy_integrations."ga_page_view" (top_level, sub_folder, entity_id,community_id,community_name,users,pageviews,page_url,month_of_year,avg_time_on_page,date)
+                  VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+        print('day')
+        print(day)          
+        if count_page_view_report == 10000 or day == "2021-03-29": 
+            print(day)
+            cursor.executemany(pg_insert, insert_page_view_report_list)
+            connection.commit()
+            insert_page_view_report_list = list()
+            count_page_view_report = 0
+            print('save_page_view_report')
+        else:
+            insert_page_view_report_list.append([VIEW_ID[0], VIEW_ID[1], VIEW_ID[2], VIEW_ID[3], VIEW_ID[4],data[x]['metric']['ga:users'],data[x]['metric']['ga:pageviews'],data[x]['dimension']['ga:pagePath'],data[x]['dimension']['ga:month'],data[x]['metric']['ga:avgTimeOnPage'],day_norway])  
+    else:
+      print(day)
+      cursor.executemany(pg_insert, insert_page_view_report_list)
+      connection.commit()
+      insert_page_view_report_list = list()
+      count_page_view_report = 0
+      print('save_page_view_report')
 def get_page_view_report(analytics,VIEW_ID,day):
   
   return analytics.reports().batchGet(
@@ -398,17 +407,17 @@ def sync_page_view_report(analytics,VIEW_ID,day):
   save_page_view_report(data,VIEW_ID,day)
 
 def sync_google_account(analytics,VIEW_ID,day):
-    sync_age_report(analytics,VIEW_ID,day)
-    sync_browser_report(analytics,VIEW_ID,day)
-    sync_default_channel_report(analytics,VIEW_ID,day)
-    sync_gender_report(analytics,VIEW_ID,day)
-    sync_user_session_report(analytics,VIEW_ID,day)
-    sync_device_report(analytics,VIEW_ID,day)
+    # sync_age_report(analytics,VIEW_ID,day)
+    # sync_browser_report(analytics,VIEW_ID,day)
+    # sync_default_channel_report(analytics,VIEW_ID,day)
+    # sync_gender_report(analytics,VIEW_ID,day)
+    # sync_user_session_report(analytics,VIEW_ID,day)
+    # sync_device_report(analytics,VIEW_ID,day)
     sync_page_view_report(analytics,VIEW_ID,day)
 
 def main():
   google_entity = get_google_entity()
-  sdate = date(2020, 1, 1)
+  sdate = date(2021, 2, 28)
   edate = date(2021, 3, 29)  
   delta = edate - sdate
   for entity in google_entity:
@@ -424,7 +433,7 @@ def main():
 def get_google_entity():
   cursor = connection.cursor()
   # server 1
-  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 0 """
+  pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 1 OFFSET 0 """
   # server 2
   # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 6 """ 
   # server 3
