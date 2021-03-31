@@ -232,7 +232,7 @@ def save_default_channel_report(data,VIEW_ID,day):
       worksheet_default_channel_view.write(count_default_channel_session, 6,data[x]['metric']['ga:sessions'])
       worksheet_default_channel_view.write(count_default_channel_session, 7,data[x]['metric']['ga:organicSearches'])
       worksheet_default_channel_view.write(count_default_channel_session, 8,data[x]['dimension']['ga:month'])
-      worksheet_default_channel_view.write(count_default_channel_session, 9,data[x]['metric']['ga:organicSearches'])
+      worksheet_default_channel_view.write(count_default_channel_session, 9,data[x]['dimension']['ga:channelGrouping'])
       worksheet_default_channel_view.write(count_default_channel_session, 10,day_norway)
       count_default_channel_session += 1      
 
@@ -402,9 +402,9 @@ def main():
 def get_google_entity():
   cursor = connection.cursor()
   # server 1
-  pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 10 OFFSET 11 """
+  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 10 OFFSET 1 """
   # server 2
-  # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 6 """ 
+  pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 51 """ 
   # server 3
   # pg_select = """ select * from consultancy_integrations."alex_ga_tracking_id" limit 3 OFFSET 9 """
   # server 4
